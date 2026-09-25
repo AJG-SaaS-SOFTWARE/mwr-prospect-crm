@@ -27,3 +27,9 @@ Prototype CRM de prospection multicanal responsable pour une activité autour du
 4. Si le prospect demande si c'est du MLM/marketing de réseau, répondre clairement oui pour la partie opportunité.
 5. Si le prospect refuse ou demande l'arrêt, passer en opposition et ne plus relancer.
 6. Ne pas utiliser d'automatisation non autorisée par les plateformes.
+
+## Automatisation multicanale (préparation)
+
+Le module `lib/channel-policy.js` est le contrôle à appeler côté serveur avant tout futur envoi via API. Il interdit l'envoi en cas d'opposition, sans identifiant plateforme, sans message entrant préalable, ou au-delà de la fenêtre standard de 24 heures de Meta. Un simple profil public ou un prospect créé manuellement ne constitue pas une autorisation de premier DM automatique.
+
+Parcours d'acquisition prévus : lien de messagerie dans le site et les contenus, publicité « envoyer un message », réponses aux commentaires suivant les règles propres à chaque plateforme. Pour Instagram/Facebook, les webhooks officiels devront enregistrer les entrants, puis un moteur de qualification proposera une réponse à valider avant activation de l'envoi automatique. Les tokens, vérifications de signature, permissions et identifiants de comptes Meta restent à configurer. Aucune intégration externe n'est active actuellement.
